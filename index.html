@@ -44,6 +44,47 @@
         <canvas id="numberArea" width="200" height="200" style="border:1px solid #000000;"></canvas>
     </div>
 
+
+    <script>
+
+        /**
+         * 1. create object that contains all the data
+         * 2. JSON stringify
+         * 3. save in localStorage
+         */
+
+        function person(firstName, lastName, age, eyeColor) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.eyeColor = eyeColor;
+            this.changeName = function (name) {
+                this.lastName = name;
+            };
+        }
+
+        //to set
+        /*
+        var kev = new person("Ke", "Schne", 26, "blue");
+        console.log(kev);
+        var kev_store = JSON.stringify(kev);
+        console.log(kev_store);
+        localStorage.setItem("data", kev_store);
+        */
+        //to load
+        var kev_new = JSON.parse(localStorage.getItem("data"));
+        console.log(kev_new);
+        kev_new.changeName("Kevnew");
+        console.log(kev_new.lastName());
+
+        localStorage.setItem("Name", "Anna");
+        localStorage.setItem("Age", 21);
+        console.log(localStorage.getItem("Name"));
+        console.log(localStorage.getItem("Age"));
+        console.log(typeof localStorage.getItem("Name"));
+        console.log(typeof localStorage.getItem("Age"));
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

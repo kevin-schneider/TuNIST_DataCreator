@@ -1,8 +1,17 @@
+function clearCanvas(){
+    console.log("clearCanvas");
+    canvas.width = canvas.width;
+    ctx.strokeStyle = "#111111";
+    ctx.lineWidth = 10;
+}
+
+
 try{
 var canvas = document.getElementById("numberArea");
 var ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#222222";
-ctx.lineWith = 2;
+//console.log(canvas);
+//ctx.strokeStyle = "#222222";
+
 
 // Set up mouse events for drawing
 var drawing = false;
@@ -43,6 +52,15 @@ window.requestAnimFrame = (function (callback) {
 // Draw to the canvas
 function renderCanvas() {
     if (drawing) {
+        //style of the penc
+        ctx.strokeStyle = "#111111";
+        ctx.lineWidth = 10;
+        console.log(ctx);
+        ctx.lineWidth = 10;
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgb(0, 0, 0)';
+
         ctx.moveTo(lastPos.x, lastPos.y);
         ctx.lineTo(mousePos.x, mousePos.y);
         ctx.stroke();

@@ -41,9 +41,11 @@
         <h1>MNIST Data Creator</h1>
         <p>v0.1</p>
         <canvas id="numberArea" width="200" height="200" style="border:1px solid #000000;"></canvas>
-        <button type="button" onclick="clearCanvas()" id="clearButton" class="btn-danger">Löschen</button>
+        <button type="button" onclick="recognize()" id="clearButton" class="btn">erkennen</button>
+        <input type="checkbox" id="preprocessing">Display Preprocessing<br>
+        <input type="checkbox" id="scaleStrokeWidth">Scale Stroke Width<br>
     </div>
-
+<div id ="nnInput"></div>
 
 
 
@@ -51,7 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="scriptCanvas.js"></script>
-    <script src="scriptData.js"></script>
+    <!-- <script src="scriptData.js"></script> -->
 </body>
 
 </html>

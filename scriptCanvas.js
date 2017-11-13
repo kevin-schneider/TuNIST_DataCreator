@@ -141,7 +141,7 @@ function recognize() {
     // now bin image into 10x10 blocks (giving a 28x28 image)
     imgData = copyCtx.getImageData(0, 0, 280, 280);
     grayscaleImg = imageDataToGrayscale(imgData);
-    var nnInput = new Array(784);
+    var mnistData = new Array(784);
     for (var y = 0; y < 28; y++) {
         for (var x = 0; x < 28; x++) {
             var mean = 0;
@@ -151,7 +151,7 @@ function recognize() {
                 }
             }
             mean = (1 - mean / 100); // average and invert
-            nnInput[x * 28 + y] = (mean - .5) / .5;
+            mnistData[x * 28 + y] = (mean - .5) / .5;
         }
     }
 
@@ -162,7 +162,7 @@ function recognize() {
         for (var y = 0; y < 28; y++) {
             for (var x = 0; x < 28; x++) {
                 var block = ctx.getImageData(x * 10, y * 10, 10, 10);
-                var newVal = 255 * (0.5 - nnInput[x * 28 + y] / 2);
+                var newVal = 255 * (0.5 - mnistData[x * 28 + y] / 2);
                 for (var i = 0; i < 4 * 10 * 10; i += 4) {
                     block.data[i] = newVal;
                     block.data[i + 1] = newVal;
@@ -175,29 +175,12 @@ function recognize() {
     }
 
     //for copy & pasting the digit into matlab
-    document.getElementById('nnInput').innerHTML=JSON.stringify(nnInput)+';<br><br><br><br>';
-    console.log(nnInput);
-
-    /*
-    var maxIndex = 0;
-    var nnOutput = nn(nnInput, w12, bias2, w23, bias3);
-    console.log(nnOutput);
-    nnOutput.reduce(function (p, c, i) {
-        if (p < c) {
-            maxIndex = i;
-            return c;
-        } else return p;
-    });
-    console.log('maxIndex: ' + maxIndex);
-    document.getElementById('nnOut').innerHTML = maxIndex;
-    clearBeforeDraw = true;
-    var dt = new Date() - t1;
-    console.log('recognize time: ' + dt + 'ms');
-    */
+    document.getElementById('mnistData_div').innerHTML=JSON.stringify(mnistData)+';<br><br><br><br>';
+    console.log(mnistData);
 }
 
-function init() {
-    console.log("FUNCTION init()");
+function initCanvas() {
+    console.log("FUNCTION initCanvas()");
     canvas = document.getElementById('numberArea');
     ctx = canvas.getContext("2d");
 
@@ -298,4 +281,4 @@ function findxy(res, e) {
     }
 }
 
-init();
+initCanvas();

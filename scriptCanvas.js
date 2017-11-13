@@ -176,6 +176,7 @@ function recognize() {
 
     //for copy & pasting the digit into matlab
     document.getElementById('nnInput').innerHTML=JSON.stringify(nnInput)+';<br><br><br><br>';
+    console.log(nnInput);
 
     /*
     var maxIndex = 0;

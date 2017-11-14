@@ -118,7 +118,8 @@ function recognize() {
     // translate to center of mass
     copyCtx.translate(trans.transX, trans.transY);
 
-    if (document.getElementById('scaleStrokeWidth').checked == true) {
+    //if (document.getElementById('scaleStrokeWidth').checked == true) {
+    if (true) {
         // redraw the image with a scaled lineWidth first.
         // not this is a bit buggy; the bounding box we computed above (which contributed to "scaling") is not valid anymore because
         // the line width has changed. This is mostly a problem for extreme cases (very small digits) where the rescaled digit will
@@ -198,14 +199,41 @@ function initCanvas() {
     }, false);
 
     canvas.addEventListener("touchmove", function (e) {
+        e.preventDefault();
         findxy('move', e.touches[0])
     }, false);
     canvas.addEventListener("touchstart", function (e) {
+        e.preventDefault();
         findxy('down', e.touches[0])
     }, false);
     canvas.addEventListener("touchend", function (e) {
+        e.preventDefault();
+        //console.log(e);
         findxy('up', e.touches[0])
     }, false);
+    canvas.addEventListener("touchleave", function (e) {
+        e.preventDefault();
+        findxy('out', e.touches[0])
+    }, false);
+
+    /*
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function (e) {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, false);
+    document.body.addEventListener("touchend", function (e) {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, false);
+    document.body.addEventListener("touchmove", function (e) {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+    }, false);
+    */
 }
 
 // draws a line from (x1, y1) to (x2, y2) with nice rounded caps

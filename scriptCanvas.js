@@ -175,7 +175,7 @@ function recognize() {
     }
 
     //for copy & pasting the digit into matlab
-    document.getElementById('mnistData_div').innerHTML=JSON.stringify(mnistData)+';<br><br><br><br>';
+    document.getElementById('mnistData_div').innerHTML = JSON.stringify(mnistData) + ';<br><br><br><br>';
     console.log(mnistData);
 }
 
@@ -196,11 +196,21 @@ function initCanvas() {
     canvas.addEventListener("mouseout", function (e) {
         findxy('out', e)
     }, false);
+
+    canvas.addEventListener("touchmove", function (e) {
+        findxy('move', e.touches[0])
+    }, false);
+    canvas.addEventListener("touchstart", function (e) {
+        findxy('down', e.touches[0])
+    }, false);
+    canvas.addEventListener("touchend", function (e) {
+        findxy('up', e.touches[0])
+    }, false);
 }
 
 // draws a line from (x1, y1) to (x2, y2) with nice rounded caps
 function draw(ctx, color, lineWidth, x1, y1, x2, y2) {
-    console.log("FUNCTION draw(ctx, color, lineWidth, x1, y1, x2, y2)");
+    console.log("FUNCTION draw(ctx, color, lineWidth, x1, y1, x2, y2)", x1, y1, x2, y2);
     ctx.beginPath();
     ctx.strokeStyle = color;
     ctx.lineWidth = lineWidth;
@@ -219,7 +229,7 @@ function erase() {
 }
 
 function findxy(res, e) {
-    console.log("FUNCTION findxy(res, e)");
+    console.log("FUNCTION findxy(res, e)", res, e);
     if (res == 'down') {
         if (clearBeforeDraw == true) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);

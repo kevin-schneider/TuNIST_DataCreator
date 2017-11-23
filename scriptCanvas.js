@@ -89,6 +89,8 @@ function imageDataToGrayscale(imgData) {
     return grayscaleImg;
 }
 
+
+
 // takes the image in the canvas, centers & resizes it, then puts into 10x10 px bins
 // to give a 28x28 grayscale image; then, computes class probability via neural network
 function recognize() {
@@ -176,8 +178,9 @@ function recognize() {
     }
 
     //for copy & pasting the digit into matlab
-    document.getElementById('mnistData_div').innerHTML = JSON.stringify(mnistData) + ';<br><br><br><br>';
+    document.getElementById('mnistData_div').innerHTML = JSON.stringify(resultToRGB(mnistData)) + ';<br><br><br><br>';
     console.log(mnistData);
+    console.log(resultToRGB(mnistData));
 }
 
 function initCanvas() {
@@ -317,6 +320,15 @@ function findxy(res, e) {
             draw(ctx, color, lineWidth, prevX, prevY, currX, currY);
         }
     }
+}
+
+function resultToRGB(input){
+    var index;
+    var output = [];
+    for (index = 0; index < input.length; ++index) {
+        output.push(Math.ceil(((input[index]+1)/2)*255));
+    }
+    return output;
 }
 
 initCanvas();

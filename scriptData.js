@@ -6,26 +6,6 @@
  */
 
 
-function metaDataClass(firstName, lastName, lastChanged, numOfDigits) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.lastChanged = lastChanged;
-    this.numOfDigits = numOfDigits;
-}
-
-function mnistDigitObject(digit, pixelArray) {
-    this.digit = digit;
-    this.pixelArray = pixelArray;
-}
-
-function dataClass(metaData) {
-    this.metaData = metaData;
-    this.mnistData = [];
-    this.addMnistDigit = function (mnistDigit) {
-        this.mnistData.push(mnistDigit);
-    };
-}
-
 //to set
 /*
 var kev = new person("Ke", "Schne", 26, "blue");

@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body onload="onLoad()">
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
@@ -52,32 +52,31 @@
 <div id="metadata-div" style="display: none;">
     <div class="ml-1 mr-1">
         <div class="row">
-            <div class="col">
-                Letzte Änderung: 23.11.2017, 20:07
+            <div class="col" id="lastchange-div">
             </div>
         </div>
 
         <div class="row mt-1">
             <div class="col">
                 <div class="progress">
-                    <div class="progress-bar" style="width:0%"></div>
+                    <div class="progress-bar" style="width:0%" id="progress-bar"></div>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <form onsubmit="proceed()">
-                    <div class="form-group">
-                        <label for="firstname">Vorname</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="Vornamen eingeben">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Nachname</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Nachnamen eingeben">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Weiter</button>
-                </form>
+
+                <div class="form-group mt-3">
+                    <label for="firstname">Vorname</label>
+                    <input type="text" class="form-control" id="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Nachname</label>
+                    <input type="text" class="form-control" id="lastname">
+                </div>
+                <button class="btn mb-2" onclick="confirmMeta()">Weiter</button>
+
             </div>
         </div>
 
@@ -88,7 +87,7 @@
 <div id="welcome-div">
     <h1>Willkommen beim MNIST Data Creator</h1>
     <h5>Tippen Sie auf Weiter, um die Anwendung zu starten.</h5>
-    <button type="button" class="btn" onclick="startApp()">Weiter</button>
+    <button type="button" class="btn mb-2" onclick="startApp()">Weiter</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

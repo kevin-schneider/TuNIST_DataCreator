@@ -66,29 +66,48 @@ function startApp() {
     console.log(progress);
     document.getElementById("progress-bar").style.width = "" + progress + "%";
 
-    document.getElementById('welcome-div').style.display = 'none';
-    document.getElementById('metadata-div').style.display = 'initial';
+    showMetaDataScreen();
 }
 
 function confirmMeta() {
     console.log("confirmMeta");
-    if (document.getElementById("firstname").value === "") {
+    if (document.getElementById("firstname").value === "" || document.getElementById("lastname").value === "") {
         alert("Bitte geben Sie Ihren Vor- und Nachnamen ein");
     }
     else {
         dataObject.metaData.firstName = document.getElementById("firstname").value;
         dataObject.metaData.lastName = document.getElementById("lastname").value;
         saveDataObject();
+        //TODO
+        showDatacreatorScreen();
     }
 }
 
-function saveDataObject(){
+function saveDataObject() {
     localStorage.setItem('dataObject', JSON.stringify(dataObject));
     console.log('DataObject saved');
 }
 
-function loadDataObject(){
+function loadDataObject() {
     dataObject = JSON.parse(localStorage.getItem("dataObject"));
+}
+
+function showMetaDataScreen() {
+    document.getElementById('welcome-div').style.display = 'none';
+    document.getElementById('datacreator-div').style.display = 'none';
+    document.getElementById('metadata-div').style.display = 'initial';
+}
+
+function showDatacreatorScreen() {
+    document.getElementById('welcome-div').style.display = 'none';
+    document.getElementById('datacreator-div').style.display = 'initial';
+    document.getElementById('metadata-div').style.display = 'none';
+}
+
+function showwelcomeScreen() {
+    document.getElementById('welcome-div').style.display = 'initial';
+    document.getElementById('datacreator-div').style.display = 'none';
+    document.getElementById('metadata-div').style.display = 'none';
 }
 
 /*

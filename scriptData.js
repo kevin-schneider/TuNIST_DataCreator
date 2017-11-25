@@ -28,7 +28,3 @@ console.log(typeof localStorage.getItem("Name"));
 console.log(typeof localStorage.getItem("Age"));
 
 
-function saveDataObject(){
-
-    localStorage.setItem('dataObject',);
-}

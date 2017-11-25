@@ -1,0 +1,16 @@
+<div id="datacreator-div" style="display: none;">
+    <div>
+        <div id="randomDigit_div"></div>
+    </div>
+
+    <div id="canvas_div">
+        <canvas id="numberArea" width="280" height="280" style="border:1px solid #000000;"></canvas>
+    </div>
+
+
+    <button type="button" onclick="recognize()" id="clearButton" class="btn">erkennen</button>
+    <input type="checkbox" id="preprocessing">Verarbeitung anzeigen<br>
+    <!-- <input type="checkbox" id="scaleStrokeWidth">Scale Stroke Width<br> -->
+
+    <div id="mnistData_div"></div>
+</div>

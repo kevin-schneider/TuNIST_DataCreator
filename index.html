@@ -32,22 +32,58 @@
         </ul>
     </div>
 </nav>
+<div id="data-creator-div">
+    <div>
+        <div id="randomDigit_div"></div>
+    </div>
 
-<div>
-    <div id="randomDigit_div"></div>
+    <div id="canvas_div">
+        <canvas id="numberArea" width="280" height="280" style="border:1px solid #000000;"></canvas>
+    </div>
+
+
+    <button type="button" onclick="recognize()" id="clearButton" class="btn">erkennen</button>
+    <input type="checkbox" id="preprocessing">Verarbeitung anzeigen<br>
+    <!-- <input type="checkbox" id="scaleStrokeWidth">Scale Stroke Width<br> -->
+
+    <div id="mnistData_div"></div>
 </div>
 
-<div id="canvas_div">
-    <canvas id="numberArea" width="280" height="280" style="border:1px solid #000000;"></canvas>
+<div id="metadata-div">
+    <div class="ml-1 mr-1">
+        <div class="row">
+            <div class="col">
+                Letzte Änderung: 23.11.2017, 20:07
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col">
+                <div class="progress">
+                    <div class="progress-bar" style="width:0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form onsubmit="proceed()">
+                    <div class="form-group">
+                        <label for="firstname">Vorname</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="Vornamen eingeben">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Nachname</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Nachnamen eingeben">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Weiter</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
 </div>
-
-
-<button type="button" onclick="recognize()" id="clearButton" class="btn">erkennen</button>
-<input type="checkbox" id="preprocessing">Verarbeitung anzeigen<br>
-<!-- <input type="checkbox" id="scaleStrokeWidth">Scale Stroke Width<br> -->
-
-<div id="mnistData_div"></div>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -60,6 +96,7 @@
         crossorigin="anonymous"></script>
 <script src="scriptCanvas.js"></script>
 <script src="logic.js"></script>
+<script src="metadata.js"></script>
 <!-- <script src="scriptData.js"></script> -->
 </body>
 

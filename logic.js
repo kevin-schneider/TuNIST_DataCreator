@@ -10,3 +10,9 @@ function initLogic() {
 }
 
 initLogic();
+
+
+/*
+document.getElementById('data-creator-div').style.display='initial';
+document.getElementById('data-creator-div').style.display='none';
+*/

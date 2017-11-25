@@ -32,7 +32,7 @@
         </ul>
     </div>
 </nav>
-<div id="data-creator-div">
+<div id="data-creator-div" style="display: none;">
     <div>
         <div id="randomDigit_div"></div>
     </div>
@@ -49,7 +49,7 @@
     <div id="mnistData_div"></div>
 </div>
 
-<div id="metadata-div">
+<div id="metadata-div" style="display: none;">
     <div class="ml-1 mr-1">
         <div class="row">
             <div class="col">
@@ -85,6 +85,12 @@
     </div>
 </div>
 
+<div id="welcome-div">
+    <h1>Willkommen beim MNIST Data Creator</h1>
+    <h5>Tippen Sie auf Weiter, um die Anwendung zu starten.</h5>
+    <button type="button" class="btn" onclick="startApp()">Weiter</button>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -96,7 +102,6 @@
         crossorigin="anonymous"></script>
 <script src="scriptCanvas.js"></script>
 <script src="logic.js"></script>
-<script src="metadata.js"></script>
 <!-- <script src="scriptData.js"></script> -->
 </body>
 

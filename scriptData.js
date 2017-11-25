@@ -5,13 +5,24 @@
  * 3. save in localStorage
  */
 
-function person(firstName, lastName, age, eyeColor) {
+
+function metaDataClass(firstName, lastName, lastChanged, numOfDigits) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.age = age;
-    this.eyeColor = eyeColor;
-    this.changeName = function (name) {
-        this.lastName = name;
+    this.lastChanged = lastChanged;
+    this.numOfDigits = numOfDigits;
+}
+
+function mnistDigitObject(digit, pixelArray) {
+    this.digit = digit;
+    this.pixelArray = pixelArray;
+}
+
+function dataClass(metaData) {
+    this.metaData = metaData;
+    this.mnistData = [];
+    this.addMnistDigit = function (mnistDigit) {
+        this.mnistData.push(mnistDigit);
     };
 }
 

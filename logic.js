@@ -11,7 +11,22 @@ function initLogic() {
 
 initLogic();
 
+function startApp(){
+    console.log("startApp");
+    document.getElementById('welcome-div').style.display='none';
+    document.getElementById('metadata-div').style.display='initial';
+}
 
+
+function onLoad(){
+    if (localStorage.getItem("dataObject") === null) {
+        metaDataObject = new metaDataClass();
+        dataObject = new dataClass();
+    }
+    else {
+        dataObject = JSON.parse(localStorage.getItem("dataObject"));
+    }
+}
 /*
 document.getElementById('data-creator-div').style.display='initial';
 document.getElementById('data-creator-div').style.display='none';

@@ -178,9 +178,12 @@ function recognize() {
     }
 
     //for copy & pasting the digit into matlab
-    document.getElementById('mnistData_div').innerHTML = JSON.stringify(resultToRGB(mnistData)) + ';<br><br><br><br>';
     console.log(mnistData);
     console.log(resultToRGB(mnistData));
+    console.log(dataObject);
+    var digit = [randomDigit, resultToRGB(mnistData)];
+    dataObject.addMnistDigit(digit);
+    saveDataObject();
 }
 
 function initCanvas() {

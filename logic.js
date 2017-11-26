@@ -1,15 +1,10 @@
 var randomDigit;
+var progress;
 
 function createRandomDigit() {
     randomDigit = Math.floor(Math.random() * 10);
     document.getElementById('randomDigit_div').innerHTML = randomDigit;
 }
-
-function initLogic() {
-    createRandomDigit();
-}
-
-initLogic();
 
 
 /*
@@ -48,7 +43,7 @@ function onLoad() {
             mnistData: [],
             addMnistDigit: function (mnistDigit) {
                 this.mnistData.push(mnistDigit);
-                this.numOfDigits++;
+                this.metaData.numOfDigits++;
             }
         };
     }
@@ -63,10 +58,9 @@ function startApp() {
     if (dataObject.metaData.firstName !== null) document.getElementById("firstname").value = dataObject.metaData.firstName;
     if (dataObject.metaData.lastName !== null) document.getElementById("lastname").value = dataObject.metaData.lastName;
     if (dataObject.metaData.lastChanged !== null) document.getElementById("lastchange-div").innerHTML = "Letzte Änderung: " + dataObject.metaData.lastChanged;
-    var progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
+    progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
     console.log(progress);
     document.getElementById("progress-bar").style.width = "" + progress + "%";
-
     showMetaDataScreen();
 }
 
@@ -79,7 +73,7 @@ function confirmMeta() {
         dataObject.metaData.firstName = document.getElementById("firstname").value;
         dataObject.metaData.lastName = document.getElementById("lastname").value;
         saveDataObject();
-        //TODO
+        nextDigit(false);
         showDatacreatorScreen();
     }
 }
@@ -91,6 +85,10 @@ function saveDataObject() {
 
 function loadDataObject() {
     dataObject = JSON.parse(localStorage.getItem("dataObject"));
+    dataObject.addMnistDigit = function (mnistDigit) {
+        this.mnistData.push(mnistDigit);
+        this.metaData.numOfDigits++;
+    };
 }
 
 function showMetaDataScreen() {
@@ -111,8 +109,20 @@ function showwelcomeScreen() {
     document.getElementById('metadata-div').style.display = 'none';
 }
 
-function nextDigit() {
-
+function nextDigit(save) {
+    if (save) recognize();
+    if (document.getElementById('preprocessing').checked == true) {
+        setTimeout(function () {
+            erase();
+        }, 3000);
+    }
+    else {
+        erase();
+    }
+    progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
+    console.log(progress);
+    document.getElementById("progress-bar-2").style.width = "" + progress + "%";
+    createRandomDigit();
 }
 
 /*

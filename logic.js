@@ -108,6 +108,12 @@ function showwelcomeScreen() {
 }
 
 function nextDigit(save) {
+    if (dataObject.metaData.numOfDigits >= 270) {
+        document.getElementById('next-button').innerHTML = 'Download';
+        document.getElementById('next-button').className = 'btn btn-warning';
+        document.getElementById('next-button').onclick = download;
+        return;
+    }
     if (save) recognize();
     if (document.getElementById('preprocessing').checked == true) {
         setTimeout(function () {
@@ -127,6 +133,10 @@ function updateProgress() {
     document.getElementById("progress-bar").style.width = "" + progress + "%";
     document.getElementById("progress-bar-2").style.width = "" + progress + "%";
     document.getElementById("progress-text").innerHTML = dataObject.metaData.numOfDigits + " / " + "1000";
+}
+
+var download = function () {
+    console.log("download");
 }
 
 /*

@@ -111,7 +111,7 @@ function nextDigit(save) {
     if (dataObject.metaData.numOfDigits >= 270) {
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
-        document.getElementById('next-button').onclick = download;
+        document.getElementById('next-button').onclick = my_download;
         return;
     }
     if (save) recognize();
@@ -135,8 +135,10 @@ function updateProgress() {
     document.getElementById("progress-text").innerHTML = dataObject.metaData.numOfDigits + " / " + "1000";
 }
 
-var download = function () {
+var my_download = function () {
     console.log("download");
+    var blob = new Blob([JSON.stringify(dataObject)], {type: "text/plain;charset=utf-8"});
+    download(blob, "mnist.txt", "text/plain");
 }
 
 /*

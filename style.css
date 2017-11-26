@@ -3,8 +3,14 @@ html, body {
     overflow-y: hidden;
 
 }
+
 body {
     position: relative;
     touch-action: none;
 }
 
+#randomDigit_div {
+    text-align: center;
+    color: rgb(0, 0, 153);
+    font-size: 300%;
+}

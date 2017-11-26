@@ -256,7 +256,8 @@ function draw(ctx, color, lineWidth, x1, y1, x2, y2) {
 function erase() {
     console.log("FUNCTION erase()");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('nnOut').innerHTML = '';
+    //document.getElementById('nnOut').innerHTML = '';
+    paths = [];
 }
 
 function findxy(res, e) {

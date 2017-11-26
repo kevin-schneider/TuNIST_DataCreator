@@ -48,6 +48,7 @@ function onLoad() {
             mnistData: [],
             addMnistDigit: function (mnistDigit) {
                 this.mnistData.push(mnistDigit);
+                this.numOfDigits++;
             }
         };
     }
@@ -108,6 +109,10 @@ function showwelcomeScreen() {
     document.getElementById('welcome-div').style.display = 'initial';
     document.getElementById('datacreator-div').style.display = 'none';
     document.getElementById('metadata-div').style.display = 'none';
+}
+
+function nextDigit() {
+
 }
 
 /*

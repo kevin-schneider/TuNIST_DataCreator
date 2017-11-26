@@ -14,3 +14,9 @@ body {
     color: rgb(0, 0, 153);
     font-size: 300%;
 }
+
+#progress-text {
+    text-align: center;
+    color: rgb(244, 66, 66);
+    font-size: 300%;
+}

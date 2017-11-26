@@ -58,9 +58,7 @@ function startApp() {
     if (dataObject.metaData.firstName !== null) document.getElementById("firstname").value = dataObject.metaData.firstName;
     if (dataObject.metaData.lastName !== null) document.getElementById("lastname").value = dataObject.metaData.lastName;
     if (dataObject.metaData.lastChanged !== null) document.getElementById("lastchange-div").innerHTML = "Letzte Änderung: " + dataObject.metaData.lastChanged;
-    progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
-    console.log(progress);
-    document.getElementById("progress-bar").style.width = "" + progress + "%";
+    updateProgress();
     showMetaDataScreen();
 }
 
@@ -119,10 +117,16 @@ function nextDigit(save) {
     else {
         erase();
     }
+    updateProgress();
+    createRandomDigit();
+}
+
+function updateProgress() {
     progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
     console.log(progress);
+    document.getElementById("progress-bar").style.width = "" + progress + "%";
     document.getElementById("progress-bar-2").style.width = "" + progress + "%";
-    createRandomDigit();
+    document.getElementById("progress-text").innerHTML = dataObject.metaData.numOfDigits + " / " + "1000";
 }
 
 /*

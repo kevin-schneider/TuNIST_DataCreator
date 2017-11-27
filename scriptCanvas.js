@@ -90,7 +90,6 @@ function imageDataToGrayscale(imgData) {
 }
 
 
-
 // takes the image in the canvas, centers & resizes it, then puts into 10x10 px bins
 // to give a 28x28 grayscale image; then, computes class probability via neural network
 function recognize() {
@@ -183,6 +182,7 @@ function recognize() {
     console.log(dataObject);
     var digit = [randomDigit, resultToRGB(mnistData)];
     dataObject.addMnistDigit(digit);
+    dataObject.metaData.lastChanged = Date.now();
     saveDataObject();
 }
 
@@ -326,11 +326,11 @@ function findxy(res, e) {
     }
 }
 
-function resultToRGB(input){
+function resultToRGB(input) {
     var index;
     var output = [];
     for (index = 0; index < input.length; ++index) {
-        output.push(Math.ceil(((input[index]+1)/2)*255));
+        output.push(Math.ceil(((input[index] + 1) / 2) * 255));
     }
     return output;
 }

@@ -57,7 +57,16 @@ function startApp() {
     console.log(dataObject);
     if (dataObject.metaData.firstName !== null) document.getElementById("firstname").value = dataObject.metaData.firstName;
     if (dataObject.metaData.lastName !== null) document.getElementById("lastname").value = dataObject.metaData.lastName;
-    if (dataObject.metaData.lastChanged !== null) document.getElementById("lastchange-div").innerHTML = "Letzte Änderung: " + dataObject.metaData.lastChanged;
+    if (dataObject.metaData.lastChanged !== null) {
+        var d = new Date(dataObject.metaData.lastChanged);
+        console.log(typeof(d));
+        var dformat = [d.getDate(), d.getMonth() + 1,
+                d.getFullYear()].join('/') + ' ' +
+            [d.getHours(),
+                d.getMinutes(),
+                d.getSeconds()].join(':');
+        document.getElementById("lastchange-div").innerHTML = "Letzte Änderung: " + dformat;
+    }
     updateProgress();
     showMetaDataScreen();
 }
@@ -108,7 +117,7 @@ function showwelcomeScreen() {
 }
 
 function nextDigit(save) {
-    if (dataObject.metaData.numOfDigits >= 270) {
+    if (dataObject.metaData.numOfDigits >= 280) {
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('next-button').onclick = my_download;
@@ -145,3 +154,4 @@ var my_download = function () {
 document.getElementById('data-creator-div').style.display='initial';
 document.getElementById('data-creator-div').style.display='none';
 */
+

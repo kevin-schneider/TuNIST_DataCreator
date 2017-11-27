@@ -102,18 +102,28 @@ function showMetaDataScreen() {
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'none';
     document.getElementById('metadata-div').style.display = 'initial';
+    document.getElementById('delete-div').style.display = 'none';
 }
 
 function showDatacreatorScreen() {
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'initial';
     document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('delete-div').style.display = 'none';
 }
 
-function showwelcomeScreen() {
+function showWelcomeScreen() {
     document.getElementById('welcome-div').style.display = 'initial';
     document.getElementById('datacreator-div').style.display = 'none';
     document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('delete-div').style.display = 'none';
+}
+
+function showDeleteScreen() {
+    document.getElementById('welcome-div').style.display = 'none';
+    document.getElementById('datacreator-div').style.display = 'none';
+    document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('delete-div').style.display = 'initial';
 }
 
 function nextDigit(save) {
@@ -149,6 +159,13 @@ var my_download = function () {
     var blob = new Blob([JSON.stringify(dataObject)], {type: "text/plain;charset=utf-8"});
     download(blob, "mnist.txt", "text/plain");
 }
+
+function deleteData() {
+    if (confirm('Wollen Sie Ihren Datensatz wirklich löschen?') == true) {
+        localStorage.removeItem('dataObject');
+    }
+}
+
 
 /*
 document.getElementById('data-creator-div').style.display='initial';

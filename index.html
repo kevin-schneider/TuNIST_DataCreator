@@ -24,10 +24,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" onclick="showWelcomeScreen()">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" onclick="showDeleteScreen()">Sonstiges</a>
             </li>
         </ul>
     </div>
@@ -95,6 +95,11 @@
     <h1>Willkommen beim MNIST Data Creator</h1>
     <h5>Tippen Sie auf Weiter, um die Anwendung zu starten.</h5>
     <button type="button" class="btn mb-2" onclick="startApp()">Weiter</button>
+</div>
+
+<div id="delete-div" style="display: none;">
+    <h5>Achtung! Hier können Sie Ihren Datensatz löschen</h5>
+    <button type="button" class="btn mb-2 btn-danger" onclick="deleteData()">Löschen</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

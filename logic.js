@@ -162,7 +162,15 @@ var my_download = function () {
 
 function deleteData() {
     if (confirm('Wollen Sie Ihren Datensatz wirklich löschen?') == true) {
+        console.log("DELETE");
         localStorage.removeItem('dataObject');
+        dataObject = null;
+        onLoad();
+        document.getElementById("firstname").value = dataObject.metaData.firstName;
+        document.getElementById("lastname").value = dataObject.metaData.firstName;
+        updateProgress();
+        document.getElementById("lastchange-div").innerHTML = '';
+        showWelcomeScreen();
     }
 }
 

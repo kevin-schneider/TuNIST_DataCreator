@@ -18,6 +18,7 @@ var clearBeforeDraw = false; // controls whether canvas will be cleared on next 
 // note 1 stands for black (0 white) so we have to invert.
 function centerImage(img) {
     console.log("FUNCTION centerImage(img)");
+    console.log(img);
     var meanX = 0;
     var meanY = 0;
     var rows = img.length;
@@ -91,7 +92,7 @@ function imageDataToGrayscale(imgData) {
 
 
 // takes the image in the canvas, centers & resizes it, then puts into 10x10 px bins
-// to give a 28x28 grayscale image; then, computes class probability via neural network
+// to give a 28x28 grayscale image
 function recognize() {
     console.log("FUNCTION recognize()");
     var t1 = new Date();

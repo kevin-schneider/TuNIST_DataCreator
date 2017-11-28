@@ -127,7 +127,7 @@ function showDeleteScreen() {
 }
 
 function nextDigit(save) {
-    if (dataObject.metaData.numOfDigits >= 280) {
+    if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to 1000
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('next-button').onclick = my_download;

@@ -88,6 +88,11 @@ function confirmMeta() {
     }
 }
 
+function skipMeta() {
+    nextDigit(false);
+    showDatacreatorScreen();
+}
+
 function saveDataObject() {
     localStorage.setItem('dataObject', JSON.stringify(dataObject));
     console.log('DataObject saved');
@@ -104,11 +109,19 @@ function loadDataObject() {
 function showMetaDataScreen() {
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'none';
-    document.getElementById('metadata-div').style.display = 'initial';
     document.getElementById('delete-div').style.display = 'none';
+    if (firstStart === true) {
+        document.getElementById('metadata-display-div').style.display = 'none';
+        document.getElementById('metadata-div').style.display = 'initial';
+    }
+    else {
+        document.getElementById('metadata-div').style.display = 'none';
+        document.getElementById('metadata-display-div').style.display = 'initial';
+    }
 }
 
 function showDatacreatorScreen() {
+    document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'initial';
     document.getElementById('metadata-div').style.display = 'none';
@@ -116,6 +129,7 @@ function showDatacreatorScreen() {
 }
 
 function showWelcomeScreen() {
+    document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'initial';
     document.getElementById('datacreator-div').style.display = 'none';
     document.getElementById('metadata-div').style.display = 'none';
@@ -123,13 +137,14 @@ function showWelcomeScreen() {
 }
 
 function showDeleteScreen() {
+    document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'none';
     document.getElementById('metadata-div').style.display = 'none';
     document.getElementById('delete-div').style.display = 'initial';
 }
 
-var nextDigit = function(save) {
+var nextDigit = function (save) {
     if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to 1000
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';

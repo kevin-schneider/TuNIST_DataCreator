@@ -7,3 +7,4 @@ ToDo:
 4. Umstellung zwischen 0, 1, 2, ... und A, B, C, ... ermöglichen
 5. Export als .arff-Datei ermöglichen
 6. Direktes senden der Mail und Anhängen der Datei implementieren
+7. Prüfen, ob Canvas leer ist

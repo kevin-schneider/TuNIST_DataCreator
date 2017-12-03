@@ -1,5 +1,7 @@
 var randomDigit;
 var progress;
+var firstStart = false;
+
 
 function createRandomDigit() {
     randomDigit = Math.floor(Math.random() * 10);
@@ -30,8 +32,9 @@ function dataClass(metaData) {
 */
 
 function onLoad() {
+    console.log('onload');
     if (localStorage.getItem("dataObject") === null) {
-        console.log('onload');
+        firstStart = true;
         var metaDataObject = {
             firstName: null,
             lastName: null,
@@ -126,7 +129,7 @@ function showDeleteScreen() {
     document.getElementById('delete-div').style.display = 'initial';
 }
 
-function nextDigit(save) {
+var nextDigit = function(save) {
     if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to 1000
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
@@ -144,7 +147,7 @@ function nextDigit(save) {
     }
     updateProgress();
     createRandomDigit();
-}
+};
 
 function updateProgress() {
     progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
@@ -158,7 +161,7 @@ var my_download = function () {
     console.log("download");
     var blob = new Blob([JSON.stringify(dataObject)], {type: "text/plain;charset=utf-8"});
     download(blob, "mnist.txt", "text/plain");
-}
+};
 
 function deleteData() {
     if (confirm('Wollen Sie Ihren Datensatz wirklich löschen?') == true) {
@@ -170,6 +173,10 @@ function deleteData() {
         document.getElementById("lastname").value = dataObject.metaData.firstName;
         updateProgress();
         document.getElementById("lastchange-div").innerHTML = '';
+
+        document.getElementById('next-button').innerHTML = 'Weiter';
+        document.getElementById('next-button').className = 'btn btn-success';
+        document.getElementById('next-button').onclick = nextDigit;
         showWelcomeScreen();
     }
 }

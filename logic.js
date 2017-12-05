@@ -117,6 +117,7 @@ function skipMeta() {
 }
 
 function saveDataObject() {
+    dataObject.metaData.lastChanged = Date.now();
     localStorage.setItem('dataObject', JSON.stringify(dataObject));
     console.log('DataObject saved');
 }

@@ -183,7 +183,6 @@ function recognize() {
     console.log(dataObject);
     var digit = [randomDigit, resultToRGB(mnistData)];
     dataObject.addMnistDigit(digit);
-    dataObject.metaData.lastChanged = Date.now();
     saveDataObject();
 }
 

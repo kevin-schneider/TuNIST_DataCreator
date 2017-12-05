@@ -56,30 +56,54 @@
 
 </div>
 
-<div id="metadata-div" style="display: none;">
+<div id="metadata-initial-div" style="display: none;">
+    <!-- on first startup -->
     <div class="ml-1 mr-1">
 
         <div class="row">
             <div class="col">
 
                 <div class="form-group mt-3">
-                    <label for="firstname">Vorname</label>
+                    <label for="firstname"><strong>Vorname</strong></label>
                     <input type="text" class="form-control" id="firstname">
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Nachname</label>
+                    <label for="lastname"><strong>Nachname</strong></label>
                     <input type="text" class="form-control" id="lastname">
                 </div>
-                <button class="btn mb-2" onclick="confirmMeta()">Weiter</button>
+
 
             </div>
+
+
         </div>
+        <div class="row">
+            <div class="col">
+
+                <label><strong>Typ des Datensatzes:</strong></label><br>
+                <input type="radio" name="datasettype" value="digit" checked> Ziffern
+                <input type="radio" name="datasettype" value="letter"> Buchstaben
+            </div>
 
 
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+
+                <label><strong>Größe des Datensatzes:</strong></label><br>
+                <input type="radio" name="datasetsize" value="200" checked> 200
+                <input type="radio" name="datasetsize" value="500"> 500
+                <input type="radio" name="datasetsize" value="1000"> 1000
+            </div>
+
+
+        </div>
+        <button class="btn mb-2 mt-3" onclick="confirmMeta()">Weiter</button>
     </div>
 </div>
 
 <div id="metadata-display-div" style="display: none;">
+    <!-- after first startup -->
     <div class="ml-1 mr-1">
         <div class="row">
             <div class="col" id="lastchange-div">

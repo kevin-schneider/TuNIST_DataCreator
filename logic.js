@@ -39,6 +39,8 @@ function onLoad() {
             firstName: null,
             lastName: null,
             lastChanged: null,
+            datasetType: null,
+            datasetSize: null,
             numOfDigits: 0
         };
         dataObject = {
@@ -82,6 +84,19 @@ function confirmMeta() {
     else {
         dataObject.metaData.firstName = document.getElementById("firstname").value;
         dataObject.metaData.lastName = document.getElementById("lastname").value;
+
+        console.log("----------");
+        for (var i = 0; i < document.getElementsByName('datasettype').length; i++) {
+            if (document.getElementsByName('datasettype')[i].checked) {
+                console.log(document.getElementsByName('datasettype')[i].value);
+            }
+        }
+        console.log("----------");
+        for (var i = 0; i < document.getElementsByName('datasetsize').length; i++) {
+            if (document.getElementsByName('datasetsize')[i].checked) {
+                console.log(document.getElementsByName('datasetsize')[i].value);
+            }
+        }
         saveDataObject();
         nextDigit(false);
         showDatacreatorScreen();
@@ -112,10 +127,10 @@ function showMetaDataScreen() {
     document.getElementById('delete-div').style.display = 'none';
     if (firstStart === true) {
         document.getElementById('metadata-display-div').style.display = 'none';
-        document.getElementById('metadata-div').style.display = 'initial';
+        document.getElementById('metadata-initial-div').style.display = 'initial';
     }
     else {
-        document.getElementById('metadata-div').style.display = 'none';
+        document.getElementById('metadata-initial-div').style.display = 'none';
         document.getElementById('metadata-display-div').style.display = 'initial';
     }
 }
@@ -124,7 +139,7 @@ function showDatacreatorScreen() {
     document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'initial';
-    document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('metadata-initial-div').style.display = 'none';
     document.getElementById('delete-div').style.display = 'none';
 }
 
@@ -132,7 +147,7 @@ function showWelcomeScreen() {
     document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'initial';
     document.getElementById('datacreator-div').style.display = 'none';
-    document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('metadata-initial-div').style.display = 'none';
     document.getElementById('delete-div').style.display = 'none';
 }
 
@@ -140,7 +155,7 @@ function showDeleteScreen() {
     document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'none';
-    document.getElementById('metadata-div').style.display = 'none';
+    document.getElementById('metadata-initial-div').style.display = 'none';
     document.getElementById('delete-div').style.display = 'initial';
 }
 

@@ -63,14 +63,14 @@ function onLoad() {
     }
     else {
         loadDataObject();
+        document.getElementById('welcome-message').innerHTML = 'Willkommen zurück ' + dataObject.metaData.firstName + ' ' + dataObject.metaData.lastName;
     }
 }
 
 function startApp() {
     console.log("startApp");
     console.log(dataObject);
-    if (dataObject.metaData.firstName !== null) document.getElementById("firstname").value = dataObject.metaData.firstName;
-    if (dataObject.metaData.lastName !== null) document.getElementById("lastname").value = dataObject.metaData.lastName;
+
     if (dataObject.metaData.lastChanged !== null) {
         var d = new Date(dataObject.metaData.lastChanged);
         console.log(typeof(d));
@@ -216,6 +216,7 @@ function deleteData() {
         document.getElementById('next-button').innerHTML = 'Weiter';
         document.getElementById('next-button').className = 'btn btn-success';
         document.getElementById('next-button').onclick = nextDigit;
+        document.getElementById('welcome-message').innerHTML = 'Willkommen beim MNIST Data Creator';
         showWelcomeScreen();
     }
 }

@@ -1,11 +1,20 @@
 var randomDigit;
 var progress;
 var firstStart = false;
+var letterArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
 
 function createRandomDigit() {
     randomDigit = Math.floor(Math.random() * 10);
-    document.getElementById('randomDigit_div').innerHTML = randomDigit;
+    if (dataObject.metaData.datasetType === 'digit') {
+        document.getElementById('randomDigit_div').innerHTML = randomDigit;
+    }
+    else if (dataObject.metaData.datasetType === 'letter') {
+        document.getElementById('randomDigit_div').innerHTML = letterArray[randomDigit];
+    }
+    else {
+        throw 'error';
+    }
 }
 
 
@@ -85,16 +94,15 @@ function confirmMeta() {
         dataObject.metaData.firstName = document.getElementById("firstname").value;
         dataObject.metaData.lastName = document.getElementById("lastname").value;
 
-        console.log("----------");
         for (var i = 0; i < document.getElementsByName('datasettype').length; i++) {
             if (document.getElementsByName('datasettype')[i].checked) {
-                console.log(document.getElementsByName('datasettype')[i].value);
+                dataObject.metaData.datasetType = document.getElementsByName('datasettype')[i].value;
             }
         }
-        console.log("----------");
+
         for (var i = 0; i < document.getElementsByName('datasetsize').length; i++) {
             if (document.getElementsByName('datasetsize')[i].checked) {
-                console.log(document.getElementsByName('datasetsize')[i].value);
+                dataObject.metaData.datasetSize = document.getElementsByName('datasetsize')[i].value;
             }
         }
         saveDataObject();
@@ -160,7 +168,7 @@ function showDeleteScreen() {
 }
 
 var nextDigit = function (save) {
-    if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to 1000
+    if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('next-button').onclick = my_download;

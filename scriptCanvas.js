@@ -140,7 +140,7 @@ function recognize() {
         copyCtx.drawImage(ctx.canvas, 0, 0);
     }
 
-
+    var canvasEmpty = true;
     // now bin image into 10x10 blocks (giving a 28x28 image)
     imgData = copyCtx.getImageData(0, 0, 280, 280);
     grayscaleImg = imageDataToGrayscale(imgData);
@@ -154,6 +154,7 @@ function recognize() {
                 }
             }
             mean = (1 - mean / 100); // average and invert
+            if (mean !== 0) canvasEmpty = false;
             mnistData[x * 28 + y] = (mean - .5) / .5;
         }
     }
@@ -177,13 +178,24 @@ function recognize() {
         }
     }
 
-    //for copy & pasting the digit into matlab
-    console.log(mnistData);
-    console.log(resultToRGB(mnistData));
-    console.log(dataObject);
-    var digit = [randomDigit, resultToRGB(mnistData)];
-    dataObject.addMnistDigit(digit);
-    saveDataObject();
+    if (!canvasEmpty) {
+        console.log(mnistData);
+        console.log(resultToRGB(mnistData));
+        console.log(dataObject);
+        var digit = [randomDigit, resultToRGB(mnistData)];
+        dataObject.addMnistDigit(digit);
+        saveDataObject();
+    }
+    else {
+        console.log("CANVAS EMPTY");
+        if (dataObject.metaData.datasetType === 'digit') {
+            alert('Bitte zeichnen Sie die Zahl.');
+        }
+        if (dataObject.metaData.datasetType === 'letter') {
+            alert('Bitte zeichnen Sie den Buchstaben.');
+        }
+    }
+    return canvasEmpty;
 }
 
 function initCanvas() {

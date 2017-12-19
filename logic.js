@@ -175,7 +175,8 @@ var nextDigit = function (save) {
         document.getElementById('next-button').onclick = my_download;
         return;
     }
-    if (save) recognize();
+    var canvasEmpty;
+    if (save) canvasEmpty = recognize();
     if (document.getElementById('preprocessing').checked == true) {
         setTimeout(function () {
             erase();
@@ -184,8 +185,10 @@ var nextDigit = function (save) {
     else {
         erase();
     }
-    updateProgress();
-    createRandomDigit();
+    if (!canvasEmpty) {
+        updateProgress();
+        createRandomDigit();
+    }
 };
 
 function updateProgress() {

@@ -222,15 +222,39 @@ var my_download = function () {
 
                 content = content + xhr.responseText;
 
-                for (var i = 0; i < dataObject.mnistData.length; i++) {
-                    console.log(dataObject.mnistData[i]);
-                    console.log(dataObject.mnistData[i][1]);
+                //PRODUCTIVE USE
+                /**
+                 for (var i = 0; i < dataObject.mnistData.length; i++) {
                     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
-                        console.log(dataObject.mnistData[i][1][j]);
                         content = content + dataObject.mnistData[i][1][j] + ',';
                     }
                     content = content + dataObject.mnistData[i][0] + '\r\n';
                 }
+                 */
+                //END PRODUCTIVE
+
+                //JUST FOR TESTING
+                for (var i = 0; i < dataObject.mnistData.length; i++) {
+                    var counter = 0;
+                    for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
+
+                        if (dataObject.mnistData[i][1][j] >= 10) {
+                            content = content + '#,';
+                        }
+                        else {
+                            content = content + dataObject.mnistData[i][1][j] + ',';
+                        }
+                        if (counter >= 27) {
+                            counter = 0;
+                            content = content + '\r\n';
+                        }
+                        else {
+                            counter++;
+                        }
+                    }
+                    content = content + dataObject.mnistData[i][0] + '\r\n';
+                }
+                //END TESTING
 
                 var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
                 download(blob, "tunist.txt", "text/plain");

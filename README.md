@@ -13,3 +13,4 @@ ToDo:
 10. Download Menue
 11. Zurück bei Loeschen
 12. unclick buttons
+13. callbacks für programmablauf?!

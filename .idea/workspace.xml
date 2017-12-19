@@ -43,8 +43,8 @@
       <file leaf-file-name="logic.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="223" column="53" lean-forward="false" selection-start-line="223" selection-start-column="53" selection-end-line="223" selection-end-column="53" />
+            <state relative-caret-position="-136">
+              <caret line="76" column="34" lean-forward="true" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -131,10 +131,10 @@
       <find>willko</find>
       <find>mnist</find>
       <find>willkommen</find>
-      <find>download</find>
       <find>/</find>
       <find>keico</find>
       <find>kei</find>
+      <find>download</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -259,12 +259,12 @@
       <workItem from="1512299700116" duration="802000" />
       <workItem from="1512300901149" duration="3650000" />
       <workItem from="1512477195203" duration="4999000" />
-      <workItem from="1513687163770" duration="9463000" />
+      <workItem from="1513687163770" duration="10368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80620000" />
+    <option name="totallyTimeSpent" value="81525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -760,8 +760,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="223" column="53" lean-forward="false" selection-start-line="223" selection-start-column="53" selection-end-line="223" selection-end-column="53" />
+        <state relative-caret-position="-136">
+          <caret line="76" column="34" lean-forward="true" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
           <folding />
         </state>
       </provider>

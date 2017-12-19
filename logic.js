@@ -69,7 +69,6 @@ function onLoad() {
 
 function startApp() {
     console.log("startApp");
-    my_download();
     console.log(dataObject);
 
     if (dataObject.metaData.lastChanged !== null) {
@@ -222,6 +221,16 @@ var my_download = function () {
                 content = content + '//METADATA' + '\r\n';
 
                 content = content + xhr.responseText;
+
+                for (var i = 0; i < dataObject.mnistData.length; i++) {
+                    console.log(dataObject.mnistData[i]);
+                    console.log(dataObject.mnistData[i][1]);
+                    for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
+                        console.log(dataObject.mnistData[i][1][j]);
+                        content = content + dataObject.mnistData[i][1][j] + ',';
+                    }
+                    content = content + dataObject.mnistData[i][0] + '\r\n';
+                }
 
                 var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
                 download(blob, "tunist.txt", "text/plain");

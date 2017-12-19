@@ -202,7 +202,7 @@ function updateProgress() {
 var my_download = function () {
     console.log("download");
     var blob = new Blob([JSON.stringify(dataObject)], {type: "text/plain;charset=utf-8"});
-    download(blob, "mnist.txt", "text/plain");
+    download(blob, "tunist.txt", "text/plain");
 };
 
 function deleteData() {
@@ -219,7 +219,7 @@ function deleteData() {
         document.getElementById('next-button').innerHTML = 'Weiter';
         document.getElementById('next-button').className = 'btn btn-success';
         document.getElementById('next-button').onclick = nextDigit;
-        document.getElementById('welcome-message').innerHTML = 'Willkommen beim MNIST Data Creator';
+        document.getElementById('welcome-message').innerHTML = 'Willkommen beim TuNIST Data Creator';
         showWelcomeScreen();
     }
 }

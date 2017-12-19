@@ -69,6 +69,7 @@ function onLoad() {
 
 function startApp() {
     console.log("startApp");
+    my_download();
     console.log(dataObject);
 
     if (dataObject.metaData.lastChanged !== null) {
@@ -200,9 +201,49 @@ function updateProgress() {
 }
 
 var my_download = function () {
-    console.log("download");
-    var blob = new Blob([JSON.stringify(dataObject)], {type: "text/plain;charset=utf-8"});
-    download(blob, "tunist.txt", "text/plain");
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (xhr.responseText) {
+
+                var content = '//METADATA' + '\r\n';
+                content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
+                content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
+                content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
+                content = content + 'Zuletzt Geändert: ' + dataObject.metaData.lastChanged + '\r\n';
+                content = content + 'Datensatzgröße: ' + dataObject.metaData.datasetSize + '\r\n';
+                content = content + 'Anzahl der Zeichen: ' + dataObject.metaData.numOfDigits + '\r\n';
+                content = content + '//METADATA' + '\r\n';
+
+                content = content + xhr.responseText;
+
+                var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+                download(blob, "tunist.txt", "text/plain");
+            }
+        }
+    };
+    xhr.open("GET", "media/mnist_begin.txt", true);
+    xhr.send();
+
+
+    /**
+     var file = new File(['Hallo, wie gehts?'], 'media/mnist_begin.txt');
+     var content;
+     var reader = new FileReader();
+     reader.onload = function (event) {
+        // Hier wird der Text der Datei ausgegeben
+        content = event.target.result;
+        console.log('LOADED');
+    };
+     reader.readAsText(file);
+     console.log(content);
+     */
 };
 
 function deleteData() {
@@ -229,4 +270,3 @@ function deleteData() {
 document.getElementById('data-creator-div').style.display='initial';
 document.getElementById('data-creator-div').style.display='none';
 */
-

@@ -169,7 +169,7 @@ function showDeleteScreen() {
 }
 
 var nextDigit = function (save) {
-    if (dataObject.metaData.numOfDigits >= 10) {//#TODO change value to dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize
+    if (dataObject.metaData.numOfDigits > dataObject.metaData.datasetSize) {
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('next-button').onclick = my_download;
@@ -192,11 +192,11 @@ var nextDigit = function (save) {
 };
 
 function updateProgress() {
-    progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(1000) * 100);
+    progress = Math.floor(parseFloat(dataObject.metaData.numOfDigits) / parseFloat(dataObject.metaData.datasetSize) * 100);
     console.log(progress);
     document.getElementById("progress-bar").style.width = "" + progress + "%";
     document.getElementById("progress-bar-2").style.width = "" + progress + "%";
-    document.getElementById("progress-text").innerHTML = dataObject.metaData.numOfDigits + " / " + "1000";
+    document.getElementById("progress-text").innerHTML = dataObject.metaData.numOfDigits + " / " + dataObject.metaData.datasetSize;
 }
 
 var my_download = function () {

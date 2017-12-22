@@ -223,18 +223,18 @@ var my_download = function () {
                 content = content + xhr.responseText;
 
                 //PRODUCTIVE USE
-                /**
+
                  for (var i = 0; i < dataObject.mnistData.length; i++) {
                     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
                         content = content + dataObject.mnistData[i][1][j] + ',';
                     }
                     content = content + dataObject.mnistData[i][0] + '\r\n';
                 }
-                 */
+                 
                 //END PRODUCTIVE
 
                 //JUST FOR TESTING
-                for (var i = 0; i < dataObject.mnistData.length; i++) {
+                /*for (var i = 0; i < dataObject.mnistData.length; i++) {
                     var counter = 0;
                     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
 
@@ -252,7 +252,7 @@ var my_download = function () {
                             counter++;
                         }
                     }
-                    content = content + dataObject.mnistData[i][0] + '\r\n';
+                    content = content + dataObject.mnistData[i][0] + '\r\n';*/
                 }
                 //END TESTING
 

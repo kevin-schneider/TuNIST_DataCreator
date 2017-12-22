@@ -17,29 +17,6 @@ function createRandomDigit() {
     }
 }
 
-
-/*
-function metaDataClass(firstName, lastName, lastChanged, numOfDigits) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.lastChanged = lastChanged;
-    this.numOfDigits = numOfDigits;
-}
-
-function mnistDigitObject(digit, pixelArray) {
-    this.digit = digit;
-    this.pixelArray = pixelArray;
-}
-
-function dataClass(metaData) {
-    this.metaData = metaData;
-    this.mnistData = [];
-    this.addMnistDigit = function (mnistDigit) {
-        this.mnistData.push(mnistDigit);
-    };
-}
-*/
-
 function onLoad() {
     console.log('onload');
     if (localStorage.getItem("dataObject") === null) {
@@ -74,12 +51,15 @@ function startApp() {
     if (dataObject.metaData.lastChanged !== null) {
         var d = new Date(dataObject.metaData.lastChanged);
         console.log(typeof(d));
-        var dformat = [d.getDate(), d.getMonth() + 1,
-                d.getFullYear()].join('/') + ' ' +
-            [d.getHours(),
-                d.getMinutes(),
-                d.getSeconds()].join(':');
+        var dformat = [d.getDate().padLeft(), (d.getMonth() + 1).padLeft(),
+                d.getFullYear()].join('.') + ', ' +
+            [d.getHours().padLeft(),
+                d.getMinutes().padLeft(),
+                d.getSeconds().padLeft()].join(':');
         document.getElementById("lastchange-div").innerHTML = "Letzte Änderung: " + dformat;
+        document.getElementById('meta-prog-div').innerHTML = 'Fortschritt: ' + dataObject.metaData.numOfDigits + ' / ' + dataObject.metaData.datasetSize;
+        if (dataObject.metaData.datasetType === 'digit') document.getElementById('meta-type-div').innerHTML = 'Datensatztyp: Ziffern';
+        if (dataObject.metaData.datasetType === 'letter') document.getElementById('meta-type-div').innerHTML = 'Datensatztyp: Buchstaben';
     }
     updateProgress();
     showMetaDataScreen();
@@ -105,6 +85,7 @@ function confirmMeta() {
                 dataObject.metaData.datasetSize = document.getElementsByName('datasetsize')[i].value;
             }
         }
+        firstStart = false;
         saveDataObject();
         nextDigit(false);
         showDatacreatorScreen();
@@ -212,7 +193,7 @@ var my_download = function () {
             if (xhr.responseText) {
 
                 var content = '//METADATA' + '\r\n';
-                content = content + 'Version: v1.1\r\n';
+                content = content + 'Version: v1.2\r\n';
                 content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
                 content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
                 content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
@@ -224,39 +205,37 @@ var my_download = function () {
                 content = content + xhr.responseText;
 
                 //PRODUCTIVE USE
-
                 for (var i = 0; i < dataObject.mnistData.length; i++) {
                     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
                         content = content + dataObject.mnistData[i][1][j] + ',';
                     }
                     content = content + dataObject.mnistData[i][0] + '\r\n';
                 }
-
                 //END PRODUCTIVE
 
                 //JUST FOR TESTING
-                /*for (var i = 0; i < dataObject.mnistData.length; i++) {
-                    var counter = 0;
-                    for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
-
-                        if (dataObject.mnistData[i][1][j] >= 10) {
-                            content = content + '#,';
-                        }
-                        else {
-                            content = content + dataObject.mnistData[i][1][j] + ',';
-                        }
-                        if (counter >= 27) {
-                            counter = 0;
-                            content = content + '\r\n';
-                        }
-                        else {
-                            counter++;
-                        }
-                    }
-                    content = content + dataObject.mnistData[i][0] + '\r\n';*/
+                // for (var i = 0; i < dataObject.mnistData.length; i++) {
+                //     var counter = 0;
+                //     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
+                //
+                //         if (dataObject.mnistData[i][1][j] >= 10) {
+                //             content = content + '#,';
+                //         }
+                //         else {
+                //             content = content + dataObject.mnistData[i][1][j] + ',';
+                //         }
+                //         if (counter >= 27) {
+                //             counter = 0;
+                //             content = content + '\r\n';
+                //         }
+                //         else {
+                //             counter++;
+                //         }
+                //     }
+                //     content = content + dataObject.mnistData[i][0] + '\r\n';
+                // }
+                //END TESTING
             }
-            //END TESTING
-
             var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
             download(blob, "tunist.txt", "text/plain");
         }
@@ -286,8 +265,7 @@ function deleteData() {
     }
 }
 
-
-/*
-document.getElementById('data-creator-div').style.display='initial';
-document.getElementById('data-creator-div').style.display='none';
-*/
+Number.prototype.padLeft = function (base, chr) {
+    var len = (String(base || 10).length - String(this).length) + 1;
+    return len > 0 ? new Array(len).join(chr || '0') + this : this;
+};

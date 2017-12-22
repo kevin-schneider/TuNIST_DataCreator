@@ -56,7 +56,7 @@
 
 <div id="metadata-initial-div" style="display: none;">
     <!-- on first startup -->
-    <div class="ml-1 mr-1">
+    <div class="ml-2 mr-2">
 
         <div class="row">
             <div class="col">
@@ -103,7 +103,7 @@
 
 <div id="metadata-display-div" style="display: none;">
     <!-- after first startup -->
-    <div class="ml-1 mr-1">
+    <div class="ml-2 mr-2">
         <div class="row">
             <div class="col">
             </div>
@@ -112,32 +112,40 @@
             <div class="col" id="lastchange-div">
             </div>
         </div>
-
-        <div class="row mt-1">
+        <div class="row">
+            <div class="col" id="meta-type-div">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" id="meta-prog-div">
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <div class="progress">
                     <div class="progress-bar" style="width:0%" id="progress-bar"></div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col">
-
-                <div class="form-group mt-3" id="show-firstname-div">
-                </div>
-                <div class="form-group" id="show-lastname-div">
-                </div>
-                <button class="btn mb-2" onclick="skipMeta()">Weiter</button>
-            </div>
-        </div>
-
-
     </div>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="form-group mt-3" id="show-firstname-div">
+            </div>
+            <div class="form-group" id="show-lastname-div">
+            </div>
+            <button class="btn mb-2" onclick="skipMeta()">Weiter</button>
+        </div>
+    </div>
+
+
+</div>
 </div>
 
 <div id="welcome-div">
-    <div class="ml-1 mr-1">
+    <div class="ml-2 mr-2">
         <h3 id="welcome-message">Willkommen beim TuNIST Data Creator</h3>
         <h5>Tippen Sie auf Weiter, um die Anwendung zu starten.</h5>
         <button type="button" class="btn mb-2" onclick="startApp()">Weiter</button>
@@ -145,9 +153,11 @@
 </div>
 
 <div id="delete-div" style="display: none;">
-    <h5>Achtung! Hier können Sie Ihren Datensatz löschen</h5>
-    <button type="button" class="btn mb-2 btn" onclick="showWelcomeScreen()">Home</button>
-    <button type="button" class="btn mb-2 btn-danger" onclick="deleteData()">Löschen</button>
+    <div class="ml-2 mr-2">
+        <h5>Achtung! Hier können Sie Ihren Datensatz löschen</h5>
+        <button type="button" class="btn mb-2 btn" onclick="showWelcomeScreen()">Home</button>
+        <button type="button" class="btn mb-2 btn-danger" onclick="deleteData()">Löschen</button>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

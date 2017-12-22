@@ -193,7 +193,7 @@ var my_download = function () {
             if (xhr.responseText) {
 
                 var content = '//METADATA' + '\r\n';
-                content = content + 'Version: v1.2\r\n';
+                content = content + 'Version: v1.3\r\n';
                 content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
                 content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
                 content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';

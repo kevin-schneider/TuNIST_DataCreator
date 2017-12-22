@@ -155,18 +155,20 @@ function recognize() {
             }
             mean = (1 - mean / 100); // average and invert
             if (mean !== 0) canvasEmpty = false;
-            mnistData[x * 28 + y] = (mean - .5) / .5;
+            //mnistData[x * 28 + y] = (mean - .5) / .5;
+            mnistData[y * 28 + x] = (mean - .5) / .5;
         }
     }
 
-    // for visualization/debugging: paint the input to the neural net.
+    // Painting
     if (document.getElementById('preprocessing').checked == true) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(copyCtx.canvas, 0, 0);
         for (var y = 0; y < 28; y++) {
             for (var x = 0; x < 28; x++) {
                 var block = ctx.getImageData(x * 10, y * 10, 10, 10);
-                var newVal = 255 * (0.5 - mnistData[x * 28 + y] / 2);
+                //var newVal = 255 * (0.5 - mnistData[x * 28 + y] / 2);
+                var newVal = 255 * (0.5 - mnistData[y * 28 + x] / 2);
                 for (var i = 0; i < 4 * 10 * 10; i += 4) {
                     block.data[i] = newVal;
                     block.data[i + 1] = newVal;

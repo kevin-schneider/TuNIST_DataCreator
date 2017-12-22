@@ -126,6 +126,9 @@ function showMetaDataScreen() {
 }
 
 function showDatacreatorScreen() {
+    if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
+        document.getElementById('numberArea').style.visibility = 'hidden';
+    }
     document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'none';
     document.getElementById('datacreator-div').style.display = 'initial';
@@ -165,6 +168,7 @@ var nextDigit = function (save) {
         createRandomDigit();
     }
     if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
+        document.getElementById('numberArea').style.visibility = 'hidden';
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('randomDigit_div').innerHTML = 'Vielen Dank!';
@@ -266,6 +270,7 @@ function deleteData() {
         document.getElementById('welcome-message').innerHTML = 'Willkommen beim TuNIST Data Creator';
         document.getElementById('clear-button').disabled = false;
         document.getElementById('numberArea').disabled = false;
+        document.getElementById('numberArea').style.visibility = 'visible';
         showWelcomeScreen();
     }
 }

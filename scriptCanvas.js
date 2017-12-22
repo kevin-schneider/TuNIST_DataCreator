@@ -335,7 +335,7 @@ function findxy(res, e) {
             }
 
             //Touchleave Event
-            if ((currX > 281 || currY > 281)) {
+            if (currX > 281 || currY > 281 || currX < 0 || currY < 0) {
                 console.log('!!!!!!!!!!!!!!!!!');
                 paintFlag = false;
             }

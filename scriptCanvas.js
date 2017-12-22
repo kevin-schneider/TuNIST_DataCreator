@@ -157,6 +157,7 @@ function recognize() {
             if (mean !== 0) canvasEmpty = false;
             //mnistData[x * 28 + y] = (mean - .5) / .5;
             mnistData[y * 28 + x] = (mean - .5) / .5;
+            //console.log(Math.ceil(255 * (0.5 - mnistData[y * 28 + x] / 2)));
         }
     }
 

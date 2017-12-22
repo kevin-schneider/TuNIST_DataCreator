@@ -20,3 +20,11 @@ body {
     color: rgb(244, 66, 66);
     font-size: 200%;
 }
+
+#numberArea {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

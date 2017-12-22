@@ -150,12 +150,6 @@ function showDeleteScreen() {
 }
 
 var nextDigit = function (save) {
-    if (dataObject.metaData.numOfDigits > dataObject.metaData.datasetSize) {
-        document.getElementById('next-button').innerHTML = 'Download';
-        document.getElementById('next-button').className = 'btn btn-warning';
-        document.getElementById('next-button').onclick = my_download;
-        return;
-    }
     var canvasEmpty;
     if (save) canvasEmpty = recognize();
     if (document.getElementById('preprocessing').checked == true) {
@@ -169,6 +163,12 @@ var nextDigit = function (save) {
     if (!canvasEmpty) {
         updateProgress();
         createRandomDigit();
+    }
+    if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
+        document.getElementById('next-button').innerHTML = 'Download';
+        document.getElementById('next-button').className = 'btn btn-warning';
+        document.getElementById('next-button').onclick = my_download;
+        return;
     }
 };
 

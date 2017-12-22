@@ -212,6 +212,7 @@ var my_download = function () {
             if (xhr.responseText) {
 
                 var content = '//METADATA' + '\r\n';
+                content = content + 'Version: v1.1\r\n';
                 content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
                 content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
                 content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
@@ -224,13 +225,13 @@ var my_download = function () {
 
                 //PRODUCTIVE USE
 
-                 for (var i = 0; i < dataObject.mnistData.length; i++) {
+                for (var i = 0; i < dataObject.mnistData.length; i++) {
                     for (var j = 0; j < dataObject.mnistData[i][1].length; j++) {
                         content = content + dataObject.mnistData[i][1][j] + ',';
                     }
                     content = content + dataObject.mnistData[i][0] + '\r\n';
                 }
-                 
+
                 //END PRODUCTIVE
 
                 //JUST FOR TESTING
@@ -253,30 +254,17 @@ var my_download = function () {
                         }
                     }
                     content = content + dataObject.mnistData[i][0] + '\r\n';*/
-                }
-                //END TESTING
-
-                var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
-                download(blob, "tunist.txt", "text/plain");
             }
+            //END TESTING
+
+            var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+            download(blob, "tunist.txt", "text/plain");
         }
-    };
+    }
+
     xhr.open("GET", "media/mnist_begin.txt", true);
     xhr.send();
 
-
-    /**
-     var file = new File(['Hallo, wie gehts?'], 'media/mnist_begin.txt');
-     var content;
-     var reader = new FileReader();
-     reader.onload = function (event) {
-        // Hier wird der Text der Datei ausgegeben
-        content = event.target.result;
-        console.log('LOADED');
-    };
-     reader.readAsText(file);
-     console.log(content);
-     */
 };
 
 function deleteData() {

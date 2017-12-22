@@ -231,10 +231,10 @@ function initCanvas() {
         //console.log(e);
         findxy('up', e.touches[0])
     }, false);
-    canvas.addEventListener("touchleave", function (e) {
-        e.preventDefault();
-        findxy('out', e.touches[0])
-    }, false);
+    // canvas.addEventListener("touchleave", function (e) {
+    //     e.preventDefault();
+    //     findxy('out', e.touches[0])
+    // }, false);
 
     /*
     // Prevent scrolling when touching the canvas
@@ -299,6 +299,7 @@ function findxy(res, e) {
                 + document.documentElement.scrollTop
                 - canvas.offsetTop;
         }
+
         //draw a circle
         ctx.beginPath();
         ctx.lineWidth = 1;
@@ -316,6 +317,7 @@ function findxy(res, e) {
     }
 
     if (res == 'move') {
+        console.log(e);
         if (paintFlag) {
             // draw a line to previous point
             prevX = currX;
@@ -331,11 +333,20 @@ function findxy(res, e) {
                     + document.documentElement.scrollTop
                     - canvas.offsetTop;
             }
-            currPath = paths[paths.length - 1];
-            currPath[0].push(currX);
-            currPath[1].push(currY);
-            paths[paths.length - 1] = currPath;
-            draw(ctx, color, lineWidth, prevX, prevY, currX, currY);
+
+            //Touchleave Event
+            if ((currX > 281 || currY > 281)) {
+                console.log('!!!!!!!!!!!!!!!!!');
+                paintFlag = false;
+            }
+            else {
+                currPath = paths[paths.length - 1];
+                currPath[0].push(currX);
+                currPath[1].push(currY);
+                paths[paths.length - 1] = currPath;
+                draw(ctx, color, lineWidth, prevX, prevY, currX, currY);
+            }
+
         }
     }
 }

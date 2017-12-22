@@ -167,7 +167,10 @@ var nextDigit = function (save) {
     if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
+        document.getElementById('randomDigit_div').innerHTML = 'Vielen Dank!';
         document.getElementById('next-button').onclick = my_download;
+        document.getElementById('clear-button').disabled = true;
+        document.getElementById('numberArea').disabled = true;
         return;
     }
 };
@@ -261,6 +264,8 @@ function deleteData() {
         document.getElementById('next-button').className = 'btn btn-success';
         document.getElementById('next-button').onclick = nextDigit;
         document.getElementById('welcome-message').innerHTML = 'Willkommen beim TuNIST Data Creator';
+        document.getElementById('clear-button').disabled = false;
+        document.getElementById('numberArea').disabled = false;
         showWelcomeScreen();
     }
 }

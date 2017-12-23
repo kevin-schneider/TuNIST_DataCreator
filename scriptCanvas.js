@@ -38,8 +38,6 @@ function centerImage(img) {
     return {transX: dX, transY: dY};
 }
 
-// given grayscale image, find bounding rectangle of digit defined
-// by above-threshold surrounding
 function getBoundingRectangle(img, threshold) {
     console.log("FUNCTION getBoundingRectangle(img, threshold)");
     var rows = img.length;
@@ -61,9 +59,6 @@ function getBoundingRectangle(img, threshold) {
     return {minY: minY, minX: minX, maxY: maxY, maxX: maxX};
 }
 
-// take canvas image and convert to grayscale. Mainly because my
-// own functions operate easier on grayscale, but some stuff like
-// resizing and translating is better done with the canvas functions
 function imageDataToGrayscale(imgData) {
     console.log("FUNCTION imageDataToGrayscale(imgData)");
     var grayscaleImg = [];
@@ -88,9 +83,6 @@ function imageDataToGrayscale(imgData) {
     return grayscaleImg;
 }
 
-
-// takes the image in the canvas, centers & resizes it, then puts into 10x10 px bins
-// to give a 28x28 grayscale image
 function recognize() {
     console.log("FUNCTION recognize()");
     var t1 = new Date();

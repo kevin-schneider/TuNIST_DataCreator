@@ -176,7 +176,6 @@ var nextDigit = function (save) {
         document.getElementById('next-button').onclick = my_download;
         document.getElementById('clear-button').disabled = true;
         document.getElementById('numberArea').disabled = true;
-        return;
     }
 };
 

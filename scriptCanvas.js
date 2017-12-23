@@ -1,5 +1,3 @@
-// some of the code below was taken from a stackoverflow flag I cannot find anymore, and adapted to my needs.
-// Thanks a ton to the original author!
 var canvas;
 var ctx;
 
@@ -7,7 +5,7 @@ var prevX = 0;
 var currX = 0;
 var prevY = 0;
 var currY = 0;
-var paths = []; // recording paths
+var paths = [];
 var paintFlag = false;
 var color = "black";
 var lineWidth = 20;
@@ -15,7 +13,7 @@ var lineWidth = 20;
 var clearBeforeDraw = false; // controls whether canvas will be cleared on next mousedown event. Set to true after digit recognition
 
 // computes center of mass of digit, for centering
-// note 1 stands for black (0 white) so we have to invert.
+// note 1 stands for black (0 white) so invert.
 function centerImage(img) {
     console.log("FUNCTION centerImage(img)");
     console.log(img);
@@ -120,24 +118,19 @@ function recognize() {
     // translate to center of mass
     copyCtx.translate(trans.transX, trans.transY);
 
-    //if (document.getElementById('scaleStrokeWidth').checked == true) {
-    if (true) {
-        // redraw the image with a scaled lineWidth first.
-        // not this is a bit buggy; the bounding box we computed above (which contributed to "scaling") is not valid anymore because
-        // the line width has changed. This is mostly a problem for extreme cases (very small digits) where the rescaled digit will
-        // be smaller than the bounding box. I could change this but it'd screw up the code.
-        for (var p = 0; p < paths.length; p++) {
-            for (var i = 0; i < paths[p][0].length - 1; i++) {
-                var x1 = paths[p][0][i];
-                var y1 = paths[p][1][i];
-                var x2 = paths[p][0][i + 1];
-                var y2 = paths[p][1][i + 1];
-                draw(copyCtx, color, lineWidth / scaling, x1, y1, x2, y2);
-            }
+
+    // redraw the image with a scaled lineWidth first.
+    // not this is a bit buggy; the bounding box we computed above (which contributed to "scaling") is not valid anymore because
+    // the line width has changed. This is mostly a problem for extreme cases (very small digits) where the rescaled digit will
+    // be smaller than the bounding box. I could change this but it'd screw up the code.
+    for (var p = 0; p < paths.length; p++) {
+        for (var i = 0; i < paths[p][0].length - 1; i++) {
+            var x1 = paths[p][0][i];
+            var y1 = paths[p][1][i];
+            var x2 = paths[p][0][i + 1];
+            var y2 = paths[p][1][i + 1];
+            draw(copyCtx, color, lineWidth / scaling, x1, y1, x2, y2);
         }
-    } else {
-        // default take image from original canvas
-        copyCtx.drawImage(ctx.canvas, 0, 0);
     }
 
     var canvasEmpty = true;
@@ -155,13 +148,11 @@ function recognize() {
             }
             mean = (1 - mean / 100); // average and invert
             if (mean !== 0) canvasEmpty = false;
-            //mnistData[x * 28 + y] = (mean - .5) / .5;
             mnistData[y * 28 + x] = (mean - .5) / .5;
-            //console.log(Math.ceil(255 * (0.5 - mnistData[y * 28 + x] / 2)));
         }
     }
 
-    // Painting
+    // Painting just for debugging
     if (document.getElementById('preprocessing').checked == true) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(copyCtx.canvas, 0, 0);
@@ -337,7 +328,6 @@ function findxy(res, e) {
 
             //Touchleave Event
             if (currX > 281 || currY > 281 || currX < 0 || currY < 0) {
-                console.log('!!!!!!!!!!!!!!!!!');
                 findxy('out', null);
             }
             else {

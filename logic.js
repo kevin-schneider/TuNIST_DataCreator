@@ -155,14 +155,15 @@ function showDeleteScreen() {
 var nextDigit = function (save) {
     var canvasEmpty;
     if (save) canvasEmpty = recognize();
-    if (document.getElementById('preprocessing').checked == true) {
-        setTimeout(function () {
-            erase();
-        }, 3000);
-    }
-    else {
-        erase();
-    }
+    // if (document.getElementById('preprocessing').checked == true) {
+    //     setTimeout(function () {
+    //         erase();
+    //     }, 3000);
+    // }
+    // else {
+    //     erase();
+    // }
+    erase();
     if (!canvasEmpty) {
         updateProgress();
         createRandomDigit();
@@ -200,7 +201,7 @@ var my_download = function () {
             if (xhr.responseText) {
 
                 var content = '//METADATA' + '\r\n';
-                content = content + 'Version: v1.6\r\n';
+                content = content + 'Version: v1.7\r\n';
                 content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
                 content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
                 content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';

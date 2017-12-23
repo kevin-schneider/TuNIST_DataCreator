@@ -352,3 +352,4 @@ function resultToRGB(input) {
 }
 
 initCanvas();
+//http://myselph.de/

@@ -43,8 +43,8 @@
       <file leaf-file-name="logic.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="46" column="74" lean-forward="false" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="74" />
+            <state relative-caret-position="578">
+              <caret line="208" column="50" lean-forward="false" selection-start-line="208" selection-start-column="50" selection-end-line="208" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -266,12 +266,12 @@
       <workItem from="1513945723459" duration="18460000" />
       <workItem from="1513981667872" duration="5000" />
       <workItem from="1514021288792" duration="13080000" />
-      <workItem from="1514110132270" duration="2130000" />
+      <workItem from="1514110132270" duration="2328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124955000" />
+    <option name="totallyTimeSpent" value="125153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -742,8 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="46" column="74" lean-forward="false" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="74" />
+        <state relative-caret-position="578">
+          <caret line="208" column="50" lean-forward="false" selection-start-line="208" selection-start-column="50" selection-end-line="208" selection-end-column="50" />
           <folding />
         </state>
       </provider>

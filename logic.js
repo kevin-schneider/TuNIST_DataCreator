@@ -2,6 +2,7 @@ var randomDigit;
 var progress;
 var firstStart = false;
 var letterArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+var specialArray = ['+', '-', '#', '%', '§', '!', '?', '*', '$', '&'];
 
 
 function createRandomDigit() {
@@ -11,6 +12,9 @@ function createRandomDigit() {
     }
     else if (dataObject.metaData.datasetType === 'letter') {
         document.getElementById('randomDigit_div').innerHTML = letterArray[randomDigit];
+    }
+    else if (dataObject.metaData.datasetType === 'special') {
+        document.getElementById('randomDigit_div').innerHTML = specialArray[randomDigit];
     }
     else {
         throw 'error';
@@ -40,7 +44,7 @@ function onLoad() {
     }
     else {
         loadDataObject();
-        document.getElementById('welcome-message').innerHTML = 'Willkommen zurück ' + dataObject.metaData.firstName + ' ' + dataObject.metaData.lastName;
+        document.getElementById('welcome-message').innerHTML = 'Willkommen ' + dataObject.metaData.firstName + ' ' + dataObject.metaData.lastName;
     }
 }
 
@@ -60,6 +64,7 @@ function startApp() {
         document.getElementById('meta-prog-div').innerHTML = 'Fortschritt: ' + dataObject.metaData.numOfDigits + ' / ' + dataObject.metaData.datasetSize;
         if (dataObject.metaData.datasetType === 'digit') document.getElementById('meta-type-div').innerHTML = 'Datensatztyp: Ziffern';
         if (dataObject.metaData.datasetType === 'letter') document.getElementById('meta-type-div').innerHTML = 'Datensatztyp: Buchstaben';
+        if (dataObject.metaData.datasetType === 'special') document.getElementById('meta-type-div').innerHTML = 'Datensatztyp: Sonderzeichen';
     }
     updateProgress();
     showMetaDataScreen();
@@ -137,6 +142,7 @@ function showDatacreatorScreen() {
 }
 
 function showWelcomeScreen() {
+    onLoad();
     document.getElementById('metadata-display-div').style.display = 'none';
     document.getElementById('welcome-div').style.display = 'initial';
     document.getElementById('datacreator-div').style.display = 'none';

@@ -180,6 +180,9 @@ function recognize() {
         if (dataObject.metaData.datasetType === 'letter') {
             alert('Bitte zeichnen Sie den Buchstaben.');
         }
+        if (dataObject.metaData.datasetType === 'special') {
+            alert('Bitte zeichnen Sie das Sonderzeichen.');
+        }
     }
     return canvasEmpty;
 }

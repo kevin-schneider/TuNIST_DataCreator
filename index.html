@@ -106,10 +106,6 @@
     <!-- after first startup -->
     <div class="ml-2 mr-2">
         <div class="row">
-            <div class="col">
-            </div>
-        </div>
-        <div class="row">
             <div class="col" id="lastchange-div">
             </div>
         </div>
@@ -158,9 +154,18 @@
 
 <div id="delete-div" style="display: none;">
     <div class="ml-2 mr-2">
-        <h5>Achtung! Hier können Sie Ihren Datensatz löschen</h5>
-        <button type="button" class="btn btn-secondary mb-2" onclick="showWelcomeScreen()">Home</button>
-        <button type="button" class="btn mb-2 btn-danger" onclick="deleteData()">Löschen</button>
+        <div class="row">
+            <div class="col">
+                <strong>Hier kehren Sie zum Home-Bildschirm zurück</strong><br>
+                <button type="button" class="btn btn-secondary mb-2" onclick="showWelcomeScreen()">Home</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Hier können Sie Ihren Datensatz löschen</strong><br>
+                <button type="button" class="btn mb-2 btn-danger" onclick="deleteData()">Löschen</button>
+            </div>
+        </div>
     </div>
 </div>
 

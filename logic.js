@@ -176,7 +176,7 @@ var nextDigit = function (save) {
     }
     if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
         document.getElementById('numberArea').style.visibility = 'hidden';
-        document.getElementById('clear-button').style.visibility = 'hidden';
+        document.getElementById('clear-button').style.display = 'none';
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('randomDigit_div').innerHTML = 'Vielen Dank!';
@@ -206,7 +206,7 @@ var my_download = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             if (xhr.responseText) {
 
-                var content = '% Version: v2.2\r\n';
+                var content = '% Version: v2.3\r\n';
                 content = content + '% Vorname: ' + dataObject.metaData.firstName + '\r\n';
                 content = content + '% Nachname: ' + dataObject.metaData.lastName + '\r\n';
                 content = content + '% Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
@@ -276,7 +276,7 @@ function deleteData() {
         document.getElementById('clear-button').disabled = false;
         document.getElementById('numberArea').disabled = false;
         document.getElementById('numberArea').style.visibility = 'visible';
-        document.getElementById('clear-button').style.visibility = 'visible';
+        document.getElementById('clear-button').style.display = 'initial';
         showWelcomeScreen();
     }
 }

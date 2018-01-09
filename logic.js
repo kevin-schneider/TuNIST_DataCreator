@@ -176,6 +176,7 @@ var nextDigit = function (save) {
     }
     if (dataObject.metaData.numOfDigits >= dataObject.metaData.datasetSize) {
         document.getElementById('numberArea').style.visibility = 'hidden';
+        document.getElementById('clear-button').style.visibility = 'hidden';
         document.getElementById('next-button').innerHTML = 'Download';
         document.getElementById('next-button').className = 'btn btn-warning';
         document.getElementById('randomDigit_div').innerHTML = 'Vielen Dank!';
@@ -205,15 +206,13 @@ var my_download = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             if (xhr.responseText) {
 
-                var content = '//METADATA' + '\r\n';
-                content = content + 'Version: v2.1\r\n';
-                content = content + 'Vorname: ' + dataObject.metaData.firstName + '\r\n';
-                content = content + 'Nachname: ' + dataObject.metaData.lastName + '\r\n';
-                content = content + 'Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
-                content = content + 'Zuletzt Geändert: ' + dataObject.metaData.lastChanged + '\r\n';
-                content = content + 'Datensatzgröße: ' + dataObject.metaData.datasetSize + '\r\n';
-                content = content + 'Anzahl der Zeichen: ' + dataObject.metaData.numOfDigits + '\r\n';
-                content = content + '//METADATA' + '\r\n';
+                var content = '% Version: v2.2\r\n';
+                content = content + '% Vorname: ' + dataObject.metaData.firstName + '\r\n';
+                content = content + '% Nachname: ' + dataObject.metaData.lastName + '\r\n';
+                content = content + '% Datensatztyp: ' + dataObject.metaData.datasetType + '\r\n';
+                content = content + '% Zuletzt Geändert: ' + dataObject.metaData.lastChanged + '\r\n';
+                content = content + '% Datensatzgröße: ' + dataObject.metaData.datasetSize + '\r\n';
+                content = content + '% Anzahl der Zeichen: ' + dataObject.metaData.numOfDigits + '\r\n';
 
                 content = content + xhr.responseText;
 
@@ -277,6 +276,7 @@ function deleteData() {
         document.getElementById('clear-button').disabled = false;
         document.getElementById('numberArea').disabled = false;
         document.getElementById('numberArea').style.visibility = 'visible';
+        document.getElementById('clear-button').style.visibility = 'visible';
         showWelcomeScreen();
     }
 }

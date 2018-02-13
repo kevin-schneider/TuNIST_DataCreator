@@ -67,8 +67,6 @@ function imageDataToGrayscale(imgData) {
         for (var x = 0; x < imgData.width; x++) {
             var offset = y * 4 * imgData.width + 4 * x;
             var alpha = imgData.data[offset + 3];
-            // weird: when painting with stroke, alpha == 0 means white;
-            // alpha > 0 is a grayscale value; in that case I simply take the R value
             if (alpha == 0) {
                 imgData.data[offset] = 255;
                 imgData.data[offset + 1] = 255;
@@ -94,8 +92,7 @@ function recognize() {
     var trans = centerImage(grayscaleImg); // [dX, dY] to center of mass
 
     // copy image to hidden canvas, translate to center-of-mass, then
-    // scale to fit into a 200x200 box (see MNIST calibration notes on
-    // Yann LeCun's website)
+    // scale to fit into a 200x200 box
     var canvasCopy = document.createElement("canvas");
     canvasCopy.width = imgData.width;
     canvasCopy.height = imgData.height;
@@ -112,9 +109,6 @@ function recognize() {
 
 
     // redraw the image with a scaled lineWidth first.
-    // not this is a bit buggy; the bounding box we computed above (which contributed to "scaling") is not valid anymore because
-    // the line width has changed. This is mostly a problem for extreme cases (very small digits) where the rescaled digit will
-    // be smaller than the bounding box. I could change this but it'd screw up the code.
     for (var p = 0; p < paths.length; p++) {
         for (var i = 0; i < paths[p][0].length - 1; i++) {
             var x1 = paths[p][0][i];
@@ -218,29 +212,6 @@ function initCanvas() {
         //console.log(e);
         findxy('up', e.touches[0])
     }, false);
-    // canvas.addEventListener("touchleave", function (e) {
-    //     e.preventDefault();
-    //     findxy('out', e.touches[0])
-    // }, false);
-
-    /*
-    // Prevent scrolling when touching the canvas
-    document.body.addEventListener("touchstart", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
-    document.body.addEventListener("touchend", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
-    document.body.addEventListener("touchmove", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
-    */
 }
 
 // draws a line from (x1, y1) to (x2, y2) with nice rounded caps
@@ -347,4 +318,6 @@ function resultToRGB(input) {
 }
 
 initCanvas();
-//http://myselph.de/
+
+//Parts of this code are inspired by Hubert Eichner
+//Copyright 2014 Hubert Eichner

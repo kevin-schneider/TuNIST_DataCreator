@@ -162,13 +162,14 @@ var nextDigit = function (save) {
     var canvasEmpty;
     if (save) canvasEmpty = recognize();
     // if (document.getElementById('preprocessing').checked == true) {
-    //     setTimeout(function () {
-    //         erase();
-    //     }, 3000);
-    // }
-    // else {
-    //     erase();
-    // }
+    if (true) {
+        setTimeout(function () {
+            erase();
+        }, 5000);
+    }
+    else {
+        erase();
+    }
     erase();
     if (!canvasEmpty) {
         updateProgress();

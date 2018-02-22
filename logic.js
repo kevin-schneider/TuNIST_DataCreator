@@ -170,7 +170,7 @@ var nextDigit = function (save) {
     else {
         erase();
     }
-    erase();
+    //erase();
     if (!canvasEmpty) {
         updateProgress();
         createRandomDigit();

@@ -160,17 +160,16 @@ function showDeleteScreen() {
 
 var nextDigit = function (save) {
     var canvasEmpty;
-    //ToDo rueckgaengig
     if (save) canvasEmpty = recognize();
-    if (document.getElementById('preprocessing').checked == true) {
-        setTimeout(function () {
-            erase();
-        }, 3000);
-    }
-    else {
-        erase();
-    }
-    //erase();
+    // if (document.getElementById('preprocessing').checked == true) {
+    //     setTimeout(function () {
+    //         erase();
+    //     }, 3000);
+    // }
+    // else {
+    //     erase();
+    // }
+    erase();
     if (!canvasEmpty) {
         updateProgress();
         createRandomDigit();

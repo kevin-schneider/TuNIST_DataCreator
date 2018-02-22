@@ -162,9 +162,9 @@ var nextDigit = function (save) {
     var canvasEmpty;
     if (save) canvasEmpty = recognize();
 
-        setTimeout(function () {
-            erase();
-        }, 5000);
+    setTimeout(function () {
+        erase();
+    }, 5000);
 
     //erase();
     if (!canvasEmpty) {

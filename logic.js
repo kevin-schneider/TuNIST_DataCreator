@@ -161,15 +161,11 @@ function showDeleteScreen() {
 var nextDigit = function (save) {
     var canvasEmpty;
     if (save) canvasEmpty = recognize();
-    // if (document.getElementById('preprocessing').checked == true) {
-    if (true) {
+
         setTimeout(function () {
             erase();
         }, 5000);
-    }
-    else {
-        erase();
-    }
+
     //erase();
     if (!canvasEmpty) {
         updateProgress();

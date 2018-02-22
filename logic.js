@@ -163,6 +163,7 @@ var nextDigit = function (save) {
     //ToDo rueckgaengig
     if (save) canvasEmpty = recognize();
     if (document.getElementById('preprocessing').checked == true) {
+        console.log('!!!!!!öööööööööööö');
         setTimeout(function () {
             erase();
         }, 3000);
